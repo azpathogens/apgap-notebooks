@@ -11,10 +11,11 @@ Template Jupyter notebooks for the Arizona Pathogen Genomics Analytics Platform 
 | [`03-launch-a-pipeline.ipynb`](notebooks/03-launch-a-pipeline.ipynb) | Installs Nextflow, writes a `nextflow.config` for GCP Batch, runs `nf-core/viralrecon` end-to-end. Includes a samplesheet builder for your real data. |
 | [`04-download-from-public-repos.ipynb`](notebooks/04-download-from-public-repos.ipynb) | Pulls sequencing data from NCBI SRA, ENA, and GenBank. Includes a sanity-check comparison between SRA and ENA copies. |
 | [`05-reference.ipynb`](notebooks/05-reference.ipynb) | File-format and tool-concept reference. Skim or search; nothing to run. Covers FASTQ, FASTA, VCF, BAM/SAM, GFF, BED, samplesheet conventions, viralrecon output layout, and Nextflow / nf-core / GCP Batch primers. |
+| [`06-launch-tostadas.ipynb`](notebooks/06-launch-tostadas.ipynb) | Installs Nextflow, writes a `nextflow.config` for GCP Batch, runs CDC's `tostadas` pipeline (measles VADR branch) end-to-end. Validates and annotates a consensus genome via VADR and produces an NCBI submission package. |
 
 ## How to use
 
-Open each notebook in your Vertex AI Workbench instance and run **Kernel → Restart & Run All**. Notebooks 01–04 run top-to-bottom; notebook 05 is reference material.
+Open each notebook in your Vertex AI Workbench instance and run **Kernel → Restart & Run All**. Notebooks 01–04 and 06 run top-to-bottom; notebook 05 is reference material.
 
 When JupyterLab prompts "Select Kernel" on first open, pick **`Python 3 (Local)`** (under "Start python Kernel"). Don't pick `Python 3 (ipykernel) (Local)` or the PyTorch / TensorFlow ones — those are missing libraries the notebooks need and will fail at the first GCS read with `ModuleNotFoundError`.
 
@@ -26,7 +27,7 @@ Notebooks 02 and 03 auto-detect your project's analytical-dataset bucket. Overri
 
 Designed for the Vertex AI Workbench managed JupyterLab environment (Python 3.10, with either `conda` or `micromamba` on the image — the install cells detect whichever is present). Notebooks install everything else they need:
 
-- Nextflow 23.10 LTS + JDK 17 (notebook 03)
+- Nextflow 23.10 LTS + JDK 17 (notebooks 03 and 06)
 - `sra-tools` and Biopython (notebook 04)
 - Biopython (notebook 02, for FASTQ parsing)
 
