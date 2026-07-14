@@ -12,10 +12,11 @@ Template Jupyter notebooks for the Arizona Pathogen Genomics Analytics Platform 
 | [`04-download-from-public-repos.ipynb`](notebooks/04-download-from-public-repos.ipynb) | Pulls sequencing data from NCBI SRA, ENA, and GenBank. Includes a sanity-check comparison between SRA and ENA copies. |
 | [`05-reference.ipynb`](notebooks/05-reference.ipynb) | File-format and tool-concept reference. Skim or search; nothing to run. Covers FASTQ, FASTA, VCF, BAM/SAM, GFF, BED, samplesheet conventions, viralrecon output layout, and Nextflow / nf-core / GCP Batch primers. |
 | [`06-launch-tostadas.ipynb`](notebooks/06-launch-tostadas.ipynb) | Installs Nextflow, writes a `nextflow.config` for GCP Batch, runs CDC's `tostadas` pipeline (measles VADR branch) end-to-end. Validates and annotates a consensus genome via VADR and produces an NCBI submission package. |
+| [`07-launch-basespace-copy.ipynb`](notebooks/07-launch-basespace-copy.ipynb) | Copies FASTQ files from Illumina BaseSpace into your lab's ingest bucket via an APGAP Portal batch upload endpoint; the backend scrubber cascade takes over from there. Interactive widget handles the endpoint URL and service key; local transfer log prevents duplicate uploads on re-runs. |
 
 ## How to use
 
-Open each notebook in your Vertex AI Workbench instance and run **Kernel → Restart & Run All**. Notebooks 01–04 and 06 run top-to-bottom; notebook 05 is reference material.
+Open each notebook in your Vertex AI Workbench instance and run **Kernel → Restart & Run All**. Notebooks 01–04, 06, and 07 run top-to-bottom; notebook 05 is reference material.
 
 When JupyterLab prompts "Select Kernel" on first open, pick **`Python 3 (Local)`** (under "Start python Kernel"). Don't pick `Python 3 (ipykernel) (Local)` or the PyTorch / TensorFlow ones — those are missing libraries the notebooks need and will fail at the first GCS read with `ModuleNotFoundError`.
 
@@ -30,6 +31,7 @@ Designed for the Vertex AI Workbench managed JupyterLab environment (Python 3.10
 - Nextflow 23.10 LTS + JDK 17 (notebooks 03 and 06)
 - `sra-tools` and Biopython (notebook 04)
 - Biopython (notebook 02, for FASTQ parsing)
+- Illumina BaseSpace CLI 1.7.0 and `google-cloud-storage` (notebook 07)
 
 Versions are pinned because newer Nextflow rejects `nf-core/viralrecon` 2.6.0's config. See notebook 05 for the rationale.
 
