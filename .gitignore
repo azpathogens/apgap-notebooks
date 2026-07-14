@@ -16,3 +16,4 @@ notebooks/*
 !notebooks/04-download-from-public-repos.ipynb
 !notebooks/05-reference.ipynb
 !notebooks/06-launch-tostadas.ipynb
+!notebooks/07-launch-basespace-copy.ipynb
